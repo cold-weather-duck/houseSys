@@ -1,0 +1,176 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+li{
+	list-style-type: none;
+}
+
+body{
+	margin: 0px auto;
+	border: 1px solid white;
+	height: 600px;
+	width: 1000px;
+}
+
+#header{
+	border: 1px solid white;
+	height: 80px;
+	width: 1000px;
+}
+
+#footer{
+	color: #AEAFAC;
+	font: 15px/20px '宋体';
+	margin-top: 20px;
+}
+
+.footl{
+	float: left;
+}
+
+.footr{
+	float: right;
+}
+
+#body{
+	border: 1px solid white;
+	width: 1000px;
+	height: 600px;
+}
+
+#searchhouse{
+	margin-top: 20px;
+	margin-right: 10px;
+	width: 400px;
+	height: 35px;
+	float: right;
+}
+
+#searchhousebutton{
+	background-color: #68A54C;
+	width: 80px;
+	height: 25px;
+	font-size: 15px;
+	color: white;
+	border: 1px solid #000000;
+	margin-top: 28px;
+	float: right;
+}
+
+#b_header{
+	border: 1px solid white;
+	border-top: 2px solid;
+	width: 1000px;
+	height: 50px;
+}
+
+.onetr th{
+	font: normal 12px/15px '黑体';
+	padding-right: 100px;
+}
+
+#search{
+	background-color: #5E77AA;
+	color: white;
+}
+
+select{
+	width: 100px;
+	background-color: transparent;
+	border-color: gray;
+	font: normal 12px/15px '黑体';
+}
+
+#b_body .zi{
+	border-bottom: 1px solid #DEDEDE;
+	height: 18px;
+	padding-top: 8px;
+	font: normal 12px/12px '黑体';
+}
+
+#b_title{
+	border-bottom: 1px dashed gray;
+	width: 700px;
+	height: 90px;
+	float: left;
+}
+
+.h_title{
+	font: bolder 30px/30px '宋体';
+	color: #C93323;
+	margin-top: 20px;
+	margin-left: 300px;
+}
+
+.h_time{
+	font: normal 15px/15px '宋体';
+	color: gray;
+	margin-top: 15px;
+	margin-left: 260px;
+}
+
+#h_b_card{
+	border: 1px solid #C2CFD5;
+	background-color: #F8FBFF;
+	width: 250px;
+	height: 150px;
+	float: right;
+	margin-top: 8px;
+}
+
+#h_b_card ul li{
+	margin-top: 3px;
+	margin-left: 15px;
+	font: normal 12px/20px '宋体';
+}
+
+.h_b_card_a{
+	font: bolder 15px/15px '宋体';
+}
+
+#b_h_baseinfo{
+	border: 1px solid white;
+	margin-top: 130px;
+	width: 600px;
+	height: 220px;
+}
+
+#b_h_baseinfo ul li span{
+	font: bolder 18px/30px '宋体';
+	color: #C01B0A;
+}
+
+#b_h_baseinfo ul li{
+	margin-top: 20px;
+	margin-left: 30px;
+}
+
+#b_h_info{
+	border: 1px solid white;
+	width: 1000px;
+	height: 150px;
+}
+
+#h_title{
+	border: 2px solid #97EAF5;
+	width: 150px;
+	height: 40px;
+	background-color: #1F87DC;
+	font: bold 18px/40px '宋体';
+	color: white;
+	text-align: center;
+}
+
+#b_hinfo{
+	border: 1px solid white;
+	height: 100px;
+	margin-top: 30px;
+	margin-left: 70px;
+}
+
+#blue_top{
+	border-top: 2px solid #316C93;
+	margin-top: -1px;
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>新房屋信息修改界面</title>
+		<link rel="stylesheet" type="text/css" href="../css/newhouse.css" type="text/css">
+		<script src="../js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/utils.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/newhouse.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/updatehouse.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				showAllType()
+				showAllDistrict()
+				
+				let nid = getRequest().hid;
+				$("[name=id]").val(nid);
+				showOld(nid);
+				
+				$("#area").change(function () {
+					showStreet($(this).val())
+				});
+				
+				//日期格式校验
+				$("#htime").blur(function(){
+					let time = $("[name=pubdate]").val();
+					if(!data(time)){
+						alert("日期格式错误，请重新输入！")
+					}
+				});
+				
+				$(".housesub").click(function(){
+					let time = $("[name=pubdate]").val();
+					if(!data(time)){
+						alert("日期格式错误，请重新输入！")
+					}else{
+						let fd = $("#myform").serialize();
+						updateHouse(fd);
+					}
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+
+		<div id="header"><!--头部-->
+			<img src="../images/logo.gif">
+		</div>
+
+		<div id="body"><!--中部-->
+			<div class="bodyheader">
+				<div class="newuser">修改房屋信息</div>
+				<div class="topzi">填写房屋信息</div>
+			</div>
+			<div class="dform">
+				<form action="javascript:void(0)" method="post" id="myform">
+					<input type="hidden" name="id" value="" />
+					<p class="title">
+						<label>标题：</label>
+						<input type="text" name="title" id="htitle" />
+					</p>
+					<p class="type">
+						<label>户型：</label>
+						<select name="typeId" id="htype">
+							<option value="1000">一室一厅</option>
+							<option value="1001">一室两厅</option>
+							<option value="1002">两室一厅</option>
+							<option value="1003">两室两厅</option>
+							<option value="1004">三室一厅</option>
+							<option value="1005">三室两厅</option>
+							<option value="1006">四室一厅</option>
+							<option value="1007">四室两厅</option>
+							<option value="1008">四室三厅</option>
+						</select>
+					</p>
+					<p class="size">
+						<label>面积：</label>
+						<input type="text" name="floorage" id="size" />
+					</p>
+					<p class="price">
+						<label>价格：</label>
+						<input type="text" name="price" id="price" />
+					</p>
+					<p class="htime">
+						<label>房产证日期：</label>
+						<input type="text" name="pubdate" id="htime" placeholder="请按照格式:yyyy-MM-dd-HH-mm-ss"/>
+					</p>
+					<p class="location">
+						<label>位置：</label>
+						区：
+						<select name="area" id="area">
+							<option value="1000">丰台</option>
+							<option value="1001">东城</option>
+							<option value="1002">西城</option>
+							<option value="1003">石景山</option>
+							<option value="1004">海淀</option>
+							<option value="1006">朝阳</option>
+						</select>
+						街：
+						<select name="streetId" id="street">
+							<option value="1000">知春路</option>
+							<option value="1001">中关村大街</option>
+							<option value="1002">学院路</option>
+							<option value="1003">朝阳路</option>
+						</select>
+					</p>
+					<p class="hphone">
+						<label>联系方式：</label>
+						<input type="text" name="contact" id="hphone" />
+					</p>
+					<p class="hinfo">
+						<label>详细信息：</label>
+						<textarea name="description" id="hinfo" cols="28"></textarea>
+					</p>
+					<div class="housesub">立即修改</div>
+				</form>
+			</div>
+		</div>
+
+		<div id="footer"><!--尾部-->
+			<hr/ style="color: #CCCCCC; margin-bottom: 10px;">
+			<div class="footl">青鸟租房 &copy; 2010 北大青鸟 京ICP证1000001号</div>
+			<div class="footr">关于我们 · 联系方式 · 意见反馈 · 帮助中心</div>
+		</div>
+
+	</body>
+</html>

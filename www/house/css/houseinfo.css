@@ -1,0 +1,120 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	margin: 0px auto;
+	border: 1px solid white;
+	height: 600px;
+	width: 1000px;
+}
+
+#header{
+	border: 1px solid white;
+	height: 5px;
+	width: 500px;
+}
+
+#footer{
+	color: #AEAFAC;
+	font: 15px/20px '宋体';
+	margin-top: 30px;
+}
+
+.footl{
+	float: left;
+}
+
+.footr{
+	float: right;
+}
+
+#body{
+	border: 1px solid white;
+	width: 1000px;
+	height: 600px;
+	margin-top: 80px;
+}
+
+#b_header{
+	border: 1px solid black;
+	border-top: 3px solid;
+	width: 1000px;
+	height: 50px;
+}
+
+.onetr th{
+	padding-right: 80px;
+}
+
+#search{
+	background-color: #5E77AA;
+	color: white;
+}
+
+select{
+	width: 100px;
+	background-color: transparent;
+	border-color: gray;
+}
+
+#b_body{
+	border: 1px solid white;
+	height: 450px;
+}
+
+#b_tab2{
+	margin-top: 20px;
+}
+
+/* #b_tab2 td:not(:last){
+	height: 85px;
+	border-bottom: 1px solid gray;
+} */
+#b_tab2 td{
+	border-bottom: 2px solid #D6D6D6;
+}
+
+#b_tab2 img{
+	padding: 20px;
+}
+
+.b_zi{
+	font: normal 12px/15px '宋体';
+}
+
+#b_tab2 a{
+	font: normal 18px/20px '宋体';
+	color: #0000FF;
+}
+
+.t_td{
+	padding-left: 30px;
+}
+
+.t_td1{
+	padding-left: 400px;
+}
+
+#b_tab2 td[name=font]{
+	color: red;
+}
+
+#b_tab2 tr:nth-of-type(even){
+	background-color: #FAF9F6;
+}
+
+.page{
+	background-color: #FDFFF2;
+	height: 30px;
+	vertical-align: top;
+}
+
+.page button{
+	margin: 2px;
+	color: #354DA6;
+	border: 1px solid gray;
+	background-color: #FEFEFE;
+	float: right;
+}

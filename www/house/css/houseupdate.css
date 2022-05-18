@@ -1,0 +1,109 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	margin: 0px auto;
+	border: 1px solid white;
+	height: 600px;
+	width: 1000px;
+}
+
+#header{
+	border: 1px solid white;
+	height: 100px;
+	width: 1000px;
+}
+
+#header button{
+	margin-top: 35px;
+	margin-left: 20px;
+	height: 30px;
+	width: 100px;
+	background-color: #68A54C;
+	font-size: 15px;
+	color: white;
+	border: 1px solid #000000;
+	float: right;
+}
+
+#footer{
+	color: #AEAFAC;
+	font: 15px/20px '宋体';
+	margin-top: 30px;
+}
+
+.footl{
+	float: left;
+}
+
+.footr{
+	float: right;
+}
+
+#body{
+	border: 1px solid white;
+	width: 1000px;
+	height: 470px;
+}
+
+#tab tr:nth-child(-n+3){
+	height: 140px;
+}
+
+#tab td{
+	border-bottom: 2px solid #D6D6D6;
+}
+
+.t_td{
+	padding-left: 30px;
+}
+
+.t_td1{
+	padding-left: 400px;
+	padding-right: 55px;
+}
+
+#tab tr:nth-of-type(even){
+	background-color: #FAF9F6;
+}
+
+#tab button[name=update]{
+	margin-left: 20px;
+	height: 30px;
+	width: 90px;
+	background-color: #68A54C;
+	font-size: 15px;
+	color: white;
+	border: 1px solid #000000;
+}
+
+#tab button[name=del]{
+	margin-left: 20px;
+	height: 30px;
+	width: 90px;
+	background-color: #68A54C;
+	font-size: 15px;
+	color: white;
+	border: 1px solid #000000;
+}
+
+.page{
+	height: 30px;
+	vertical-align: middle;
+	margin-top: 5px;
+	background-color: #FDFFF2;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.page button{
+	width: 18px;
+	height: 25px;
+	margin-left: 5px;
+	color: #3855AA;
+	border: 1px solid gray;
+	font-weight: bolder;
+	background-color: #FEFEFE;
+	float: right;
+}

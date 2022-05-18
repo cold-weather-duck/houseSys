@@ -1,0 +1,91 @@
+*{
+	margin: 0px auto;
+	padding: 0px auto;
+}
+
+body{
+	border: 1px solid white;
+	height: 600px;
+	width: 1000px;
+}
+
+#header{
+	border: 1px solid white;
+	height: 100px;
+	width: 500px;
+	float: left;
+}
+
+#body{
+	background-color: #F0F5F8;
+	border: 1px solid blue;
+	margin-top: 100px;
+	height: 350px;
+	width: 600px;
+}
+
+#footer{
+	color: #AEAFAC;
+	font: 15px/20px '宋体';
+	margin-top: 30px;
+}
+
+.footl{
+	float: left;
+}
+
+.footr{
+	float: right;
+}
+
+.userlogin{
+	margin: 10px;
+}
+
+.form{
+	border: 1px solid #F0F5F8;
+	margin-left: 80px;
+	margin-top: 80px;
+	width: 400px;
+	height: 400px;
+}
+
+.one{
+	font: normal 18px/20px '宋体';
+}
+
+.two{
+	font: normal 18px/20px '宋体';
+}
+
+#myform p{
+	color: #8F848B;
+	padding: 10px;
+}
+
+#myform p label{
+	width: 80px;
+	text-align: right;
+	display: inline-block;
+}
+
+.loginbut,.registerbut{
+	width: 120px;
+	height: 30px;
+	padding-top: 5px;
+	text-align: center;
+	font: normal 20px/20px '宋体';
+	color: white;
+	background-image: url(../images/wx_icp.jpg);
+	background-repeat: no-repeat;
+	background-size: 120px 30px;
+	float: left;
+}
+
+.registerbut{
+	margin-left: 20px;
+}
+
+.loginbut{
+	margin-left: 120px;
+}

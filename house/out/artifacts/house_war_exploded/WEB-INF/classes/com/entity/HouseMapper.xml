@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.IHouseDao" >
+  <resultMap id="BaseResultMap" type="com.entity.House" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="TYPE_ID" property="typeId" jdbcType="INTEGER" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="PRICE" property="price" jdbcType="INTEGER" />
+    <result column="PUBDATE" property="pubdate" jdbcType="TIMESTAMP" />
+    <result column="FLOORAGE" property="floorage" jdbcType="INTEGER" />
+    <result column="CONTACT" property="contact" jdbcType="VARCHAR" />
+    <result column="STREET_ID" property="streetId" jdbcType="INTEGER" />
+    <!-- 多对一配置 -->
+    <!--用户-->
+    <association property="users" column="USER_ID" javaType="Users">
+      <id column="uid" property="id" jdbcType="INTEGER" />
+      <result column="uname" property="name" jdbcType="VARCHAR" />
+      <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+      <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR" />
+      <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+      <result column="ISADMIN" property="isadmin" jdbcType="VARCHAR" />
+    </association>
+    <!--房屋街道-->
+    <association property="street" column="STREET_ID" javaType="Street">
+      <id column="sid" property="id" jdbcType="INTEGER" />
+      <result column="sname" property="name" jdbcType="VARCHAR" />
+      <result column="DISTRICT_ID" property="districtId" jdbcType="INTEGER" />
+      <association property="district" column="DISTRICT_ID" javaType="District"><!-- 区域 -->
+        <id column="did" property="id" jdbcType="INTEGER" />
+        <result column="dname" property="name" jdbcType="VARCHAR" />
+      </association>
+    </association>
+    <!--房屋类型-->
+    <association property="type2" column="TYPE_ID " javaType="Type2">
+      <id column="tid" property="id" jdbcType="INTEGER" />
+      <result column="tname" property="name" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, USER_ID, TYPE_ID, TITLE, DESCRIPTION, PRICE, PUBDATE, FLOORAGE, CONTACT, STREET_ID
+  </sql>
+
+  <!-- 动态查询房屋 -->
+  <select id="selectActive" resultMap="BaseResultMap" parameterType="java.util.Map">
+    SELECT h.* , u.* , s.* , t.* ,
+    u.id AS uid , u.name AS uname ,
+    s.id AS sid , s.name AS sname ,
+    t.id AS tid , t.name AS tname ,
+    d.id as did , d.name AS dname
+    FROM house h INNER JOIN users u ON h.`USER_ID` = u.`ID`
+    INNER JOIN street s ON h.`STREET_ID` = s.`ID`
+    INNER JOIN type2 t ON h.`TYPE_ID` = t.`ID`
+    INNER JOIN district d ON  d.`ID` = s.`DISTRICT_ID`
+    <where>
+      <if test="title!=null">
+        AND h.title LIKE #{title}
+      </if>
+      <if test="minprice!=null and maxprice!=null">
+        AND h.price BETWEEN #{minprice} AND #{maxprice}
+      </if>
+      <if test="street!=null">
+        AND s.name = #{street}
+      </if>
+      <if test="type2!=null">
+        AND t.name = #{type2}
+      </if>
+      <if test="district!=null">
+        AND d.name = #{district}
+      </if>
+      <if test="minfloorage!=null and maxfloorage!=null">
+        AND h.floorage BETWEEN #{minfloorage} AND #{maxfloorage}
+      </if>
+    </where>
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT h.* , u.* , s.* , t.* ,
+    u.id AS uid , u.name AS uname ,
+    s.id AS sid , s.name AS sname ,
+    t.id AS tid , t.name AS tname ,
+    d.id as did , d.name AS dname
+    FROM house h INNER JOIN users u ON h.`USER_ID` = u.`ID`
+    INNER JOIN street s ON h.`STREET_ID` = s.`ID`
+    INNER JOIN type2 t ON h.`TYPE_ID` = t.`ID`
+    INNER JOIN district d ON  d.`ID` = s.`DISTRICT_ID`
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT h.* , u.* , s.* , t.* ,
+    u.id AS uid , u.name AS uname ,
+    s.id AS sid , s.name AS sname ,
+    t.id AS tid , t.name AS tname ,
+    d.id as did , d.name AS dname
+    FROM house h INNER JOIN users u ON h.`USER_ID` = u.`ID`
+    INNER JOIN street s ON h.`STREET_ID` = s.`ID`
+    INNER JOIN type2 t ON h.`TYPE_ID` = t.`ID`
+    INNER JOIN district d ON  d.`ID` = s.`DISTRICT_ID`
+    where h.ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from house
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.entity.House" >
+    insert into house (DEFAULT , USER_ID, TYPE_ID,
+      TITLE, DESCRIPTION, PRICE,
+      PUBDATE, FLOORAGE, CONTACT,
+      STREET_ID)
+    values (DEFAULT , #{userId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER},
+      #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}, 
+      #{pubdate,jdbcType=TIMESTAMP}, #{floorage,jdbcType=INTEGER}, #{contact,jdbcType=VARCHAR}, 
+      #{streetId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.entity.House" >
+    insert into house
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="typeId != null" >
+        TYPE_ID,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+      <if test="pubdate != null" >
+        PUBDATE,
+      </if>
+      <if test="floorage != null" >
+        FLOORAGE,
+      </if>
+      <if test="contact != null" >
+        CONTACT,
+      </if>
+      <if test="streetId != null" >
+        STREET_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="pubdate != null" >
+        #{pubdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="floorage != null" >
+        #{floorage,jdbcType=INTEGER},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="streetId != null" >
+        #{streetId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.entity.House" >
+    update house
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null" >
+        TYPE_ID = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="pubdate != null" >
+        PUBDATE = #{pubdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="floorage != null" >
+        FLOORAGE = #{floorage,jdbcType=INTEGER},
+      </if>
+      <if test="contact != null" >
+        CONTACT = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="streetId != null" >
+        STREET_ID = #{streetId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.entity.House" >
+    update house
+    set USER_ID = #{userId,jdbcType=INTEGER},
+      TYPE_ID = #{typeId,jdbcType=INTEGER},
+      TITLE = #{title,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      PRICE = #{price,jdbcType=INTEGER},
+      PUBDATE = #{pubdate,jdbcType=TIMESTAMP},
+      FLOORAGE = #{floorage,jdbcType=INTEGER},
+      CONTACT = #{contact,jdbcType=VARCHAR},
+      STREET_ID = #{streetId,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,105 @@
+*{
+	margin: 0px auto;
+	padding: 0px auto;
+}
+
+body{
+	border: 1px solid white;
+	height: 600px;
+	width: 1000px;
+}
+
+#header{
+	border: 1px solid white;
+	height: 100px;
+	width: 500px;
+	float: left;
+}
+
+#body{
+	border: 1px solid white;
+	width: 550px;
+	height: 400px;
+	margin-top: 120px;
+}
+
+#footer{
+	color: #AEAFAC;
+	font: 15px/20px '宋体';
+	margin-top: 200px;
+}
+
+.footl{
+	float: left;
+}
+
+.footr{
+	float: right;
+}
+
+.bodyheader{
+	border-bottom: 4px solid #0099CC;
+}
+
+.newuser{
+	border: 1px solid white;
+	width: 120px;
+	margin-left: 10px;
+	padding-top: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font: bolder 15px/20px '宋体';
+	float: left;
+}
+
+.topzi{
+	border: 1px solid #0099CC;
+	height: 30px;
+	width: 200px;
+	margin-left: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #0099CC;
+	color: white;
+	font: bolder 18px/20px '宋体';
+}
+
+.dform{
+	border: 1px solid white;
+	height: 550px;
+	width: 550px;
+	background-color: #F0F5F8;
+}
+
+#myform{
+	margin-top: 30px;
+	margin-left: 50px;
+}
+
+#myform p label{
+	width: 100px;
+	text-align: right;
+	display: inline-block;
+}
+
+#myform p{
+	color: #8F848B;
+	padding: 10px;
+}
+
+#myform input{
+	width: 250px;
+	height: 20px;
+}
+
+.housesub{
+	background-image: url(../images/wx_icp.jpg);
+	background-repeat: no-repeat;
+	background-size: 120px 50px;
+	padding-left: 25px;
+	margin-left: 150px;
+	margin-top: 20px;
+	color: white;
+}
